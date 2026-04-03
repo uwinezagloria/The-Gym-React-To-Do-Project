@@ -12,7 +12,8 @@ function App() {
       const newTodo={
         id:crypto.randomUUID(),
         title:title,
-        completed:false
+        completed:false,
+        show:true,
       }
  setTodo((prev)=>[...prev,newTodo])
     }
@@ -24,12 +25,22 @@ const updateTodo=todos.map(todo=>{
 })
 setTodo(updateTodo)
     }
+    //deleting todo 
+    const deleteTodo=(id)=>{
+
+  const deleting=todos.map(todo=>{
+return todo.id===id?{...todo,show:!todo.show}:todo
+
+  })
+  setTodo(deleting)
+
+    }
     
   return (
     <section className="flex items-center justify-center  flex-col gap-10 mt-20 bg-blue-400 mx-40 py-20 rounded-4xl">
       <h1 className="text-6xl text-gray-600 font-bold">Todos</h1>
      <CreateToDo createtodo={createTodo} />
-  <TodoList  todos={todos} checkingTodo={markTodo}/>
+  <TodoList  todos={todos} checkingTodo={markTodo} deleteTodo={deleteTodo}/>
   
     </section>
   
