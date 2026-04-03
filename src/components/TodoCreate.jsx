@@ -7,7 +7,7 @@ const CreateToDo = ({createtodo}) => {
     function getTodo(formdata){
 const data=Object.fromEntries(formdata)
 createtodo(data.task)
-console.log(data.task)
+
     }
   return (
    
